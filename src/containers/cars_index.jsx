@@ -46,7 +46,8 @@ class CarsIndex extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    cars: reduxState.cars
+    cars: reduxState.cars,
+    garage: reduxState.garage
   };
 }
 

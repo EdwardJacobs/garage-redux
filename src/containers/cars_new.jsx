@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 import Aside from '../components/aside';
-import { addCar } from '../actions/index';
+import { addCar } from '../actions';
 
 class CarsNew extends Component {
   onSubmit = (values) => {
