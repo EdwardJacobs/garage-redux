@@ -4,8 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Aside from '../components/aside';
+import { fetchCars } from "../actions/index";
 
 class CarsIndex extends Component {
+  componentWillMount() {
+    this.props.fetchCars(this.props.garage);
+  }
+
   render() {
     if (this.props.cars.length === 0) {
       return [
@@ -45,4 +50,8 @@ function mapStateToProps(reduxState) {
   };
 }
 
-export default connect(mapStateToProps)(CarsIndex);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCars }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CarsIndex);
