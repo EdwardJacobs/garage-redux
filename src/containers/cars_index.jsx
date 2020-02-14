@@ -3,23 +3,39 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
+import Aside from '../components/aside';
 
 class CarsIndex extends Component {
   render() {
-
-    return (
-
-      <div className="list-container">
+    if (this.props.cars.length === 0) {
+      return [
+        <Aside key="aside" garage={this.props.garage}>
+          <Link to="/cars/new">Add a car</Link>
+        </Aside>,
+        <div className="no-car" key="nocar">No car yet</div>
+      ];
+    }
+    return [
+      <Aside key="aside" garage={this.props.garage}>
+        <Link to="/cars/new">Add a car</Link>
+      </Aside>,
+      <div className="list-container" key="cars">
         {this.props.cars.map((car) => {
           return (
-            <div>
-              <span>{car.brand} - {car.model}</span>
+            <div key={car.id} className="car-smallad">
+              <Link to={`/cars/${car.id}`} key={car.id} />
+              <img className="car-logo" src="assets/images/logo_square.svg" alt="logo" />
+              <div className="car-details">
+                <span>{car.brand} - {car.model}</span>
+                <ul>
+                  <li><strong>Owner:</strong> {car.owner}</li>
+                </ul>
+              </div>
             </div>
           );
         })}
       </div>
-    )
+    ];
   }
 }
 
