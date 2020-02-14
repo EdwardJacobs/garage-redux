@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 
 class CarsIndex extends Component {
   render() {
+
     return (
+
       <div className="list-container">
         {this.props.cars.map((car) => {
           return (
