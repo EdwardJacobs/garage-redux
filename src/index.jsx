@@ -9,13 +9,13 @@ import { createHistory as history } from 'history';
 import { reducer as formReducer } from 'redux-form';
 
 import CarsIndex from './containers/cars_index';
-import CarsNew from './containers/cars_new';
 import CarsShow from './containers/cars_show';
-
+import CarsNew from './containers/cars_new';
 import '../assets/stylesheets/application.scss';
 
-import carsReducer from './reducers/cars_reducer';
+import carsReducer from './reducers/cars_reducer.js';
 
+// State and reducers
 const garageName = prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
 const initialState = {
   garage: garageName,
@@ -43,5 +43,5 @@ ReactDOM.render(
       </div>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.querySelector('.container')
 );

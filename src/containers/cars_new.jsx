@@ -58,3 +58,4 @@ export default reduxForm({
 })(
   connect(mapStateToProps, { addCar })(CarsNew)
 );
+
